@@ -2,7 +2,7 @@
 @model BMICalculator.Pages.BmiModel
 
 @{
-    ViewData["Title"] = "BMI calculator";
+    ViewData["Title"] = "BMI Calculator";
 }
 
 <h2>BMI Calculator 2021</h2>
@@ -12,6 +12,11 @@
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="BMI.Age" class="control-label"></label>
+                <input asp-for="BMI.Age" class="form-control" />
+                <span asp-validation-for="BMI.Age" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <label asp-for="BMI.WeightStones" class="control-label"></label>
                 <input asp-for="BMI.WeightStones" class="form-control" />
@@ -35,7 +40,7 @@
             <div class="form-group">
                 <input type="submit" value="Calculate" class="btn btn-default" />
             </div>
-            @if (Request.Method == "POST")
+            @if (Request.Method == "POST" && ModelState.IsValid)
             {
                 <div>
                     @Html.DisplayNameFor(m => m.BMI.BMIValue)
@@ -48,11 +53,10 @@
             }
         </form>
     </div>
-
 </div>
 
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
-

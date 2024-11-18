@@ -16,6 +16,7 @@ namespace BMIUnitTestProject
 
         [TestMethod]
         public void TestMethod2()
+
         {
             BMI bmi = new BMI() { WeightStones = 15, WeightPounds = 0, HeightFeet = 5, HeightInches = 10, Age = 29 };
             Assert.AreEqual(bmi.BMICategory, BMICategory.Obese);

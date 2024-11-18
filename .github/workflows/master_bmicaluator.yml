@@ -24,7 +24,7 @@ jobs:
       - name: Build with dotnet
         run: dotnet build --configuration Release
 
-        name: Run unit tests
+      - name: Run unit tests
         run: dotnet test BMIUnitTestProject/BMIUnitTestProject.csproj --no-restore --collect "Code coverage"
 
       - name: dotnet publish

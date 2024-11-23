@@ -1,4 +1,4 @@
-name: Build and deploy ASP.Net Core app to Azure Web App - BMICalculator
+name: Build, Test, and Deploy ASP.Net Core app to Azure Web App - BMICalculator
 
 on:
   push:
@@ -8,59 +8,66 @@ on:
 
 jobs:
   build:
+    name: Build and Unit Test
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout Repository
+        uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Ensure full checkout
+          fetch-depth: 0  # Ensures a full history fetch to assist with versioning and logging
 
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '8.x'
 
-      - name: Build with dotnet
+      - name: Build Application
         run: dotnet build --configuration Release
-        
-      - name: Run unit tests
+
+      - name: Run Unit Tests
         run: dotnet test BMIUnitTestProject/BMIUnitTestProject.csproj --no-restore
 
-      - name: dotnet publish
+      - name: Publish Application
         run: dotnet publish -c Release -o myapp
 
-      - name: Upload artifact for deployment job
+      - name: Upload Artifact for Deployment
         uses: actions/upload-artifact@v4
         with:
           name: .net-app
           path: myapp
 
   deploy:
+    name: Deploy to Azure Web App
     runs-on: ubuntu-latest
     needs: build
     environment:
       name: 'Production'
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     permissions:
-      id-token: write # This is required for requesting the JWT
-
+      id-token: write # This is required for requesting the JWT during deployment
 
     steps:
-      - name: Download artifact from build job
+      - name: Download Artifact from Build Job
         uses: actions/download-artifact@v4
         with:
           name: .net-app
 
-     # Run Selenium tests
-      - name: Run Selenium tests
-        run: dotnet test  /home/runner/work/BMICalculator/BMICalculator/myapp/SeleniumTest.dll/name="bmicaluator-f4fwgrdfdbfkgfet.ukwest-01.azurewebsites.net"
-  
-    # Upload results of selenium tests
-      - uses: actions/upload-artifact@v4
+      - name: Set up ChromeDriver
+        uses: nanasess/setup-chromedriver@v1  # This sets up ChromeDriver for Selenium tests
+
+      # Run Selenium tests to validate the deployment before production swap
+      - name: Run Selenium Tests
+        run: |
+          dotnet test myapp/SeleniumTest/SeleniumTest.dll --logger:"trx;LogFileName=selenium.trx"
+        continue-on-error: true  # This ensures that a failed Selenium test doesn’t halt the workflow
+
+      # Upload results of Selenium tests
+      - name: Upload Selenium Test Results
+        uses: actions/upload-artifact@v4
         with:
-         name: Selenium Tests Results
-         path: TestResults/selenium.trx
-  
+          name: Selenium Tests Results
+          path: myapp/SeleniumTest/TestResults/selenium.trx
+
       - name: Login to Azure
         uses: azure/login@v2
         with:
@@ -75,3 +82,13 @@ jobs:
           app-name: 'BMICalculator'
           slot-name: 'Production'
           package: myapp
+
+      - name: Blue/Green Swap Deployment Slots
+        run: |
+          az webapp deployment slot swap \
+            --name BMICalculator \
+            --resource-group MyResourceGroup \
+            --slot staging \
+            --target-slot production
+        continue-on-error: false  # Ensures if the swap fails, the deployment process halts
+

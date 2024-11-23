@@ -53,7 +53,7 @@ jobs:
 
                # Run Selenium tests
       - name: Run Selenium tests
-        run: dotnet test ${{env.DOTNET_ROOT}}/myapp/SeleniumTest.dll"trx;LogFileName=selenium.trx"
+        run: dotnet test ${{env.DOTNET_ROOT}}/myapp/SeleniumTest.dll
   
     # Upload results of selenium tests
       - uses: actions/upload-artifact@v4

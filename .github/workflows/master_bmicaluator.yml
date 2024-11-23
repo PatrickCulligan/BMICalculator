@@ -52,8 +52,7 @@ jobs:
         with:
           name: .net-app
 
-      - name: Set up ChromeDriver
-        uses: nanasess/setup-chromedriver@v1  # This sets up ChromeDriver for Selenium tests
+     
 
       # Run Selenium tests to validate the deployment before production swap
       - name: Run Selenium Tests

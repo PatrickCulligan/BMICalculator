@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy ASP.Net Core app to Azure Web App - BMICaluator
+name: Build and deploy ASP.Net Core app to Azure Web App - BMICalculator
 
 on:
   push:
@@ -28,13 +28,13 @@ jobs:
         run: dotnet test BMIUnitTestProject/BMIUnitTestProject.csproj --no-restore
 
       - name: dotnet publish
-        run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
+        run: dotnet publish -c Release -o myapp
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: .net-app
-          path: ${{env.DOTNET_ROOT}}/myapp
+          path: myapp
 
   deploy:
     runs-on: ubuntu-latest
@@ -43,7 +43,7 @@ jobs:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     permissions:
-      id-token: write #This is required for requesting the JWT
+      id-token: write # This is required for requesting the JWT
 
     steps:
       - name: Download artifact from build job
@@ -51,17 +51,29 @@ jobs:
         with:
           name: .net-app
 
+      # Debug Step: List directory contents
+      - name: List directory contents
+        run: ls -R
 
-               # Run Selenium tests
+      # Build Selenium Test Project
+      - name: Build Selenium Test Project
+        run: dotnet build SeleniumTest/SeleniumTest.csproj --configuration Release
+
+      # Debug Step: List Selenium build directory
+      - name: List Selenium build directory
+        run: ls -R ./SeleniumTest/bin/Release/net8.0/
+
+      # Run Selenium tests
       - name: Run Selenium tests
-        run: dotnet test /home/runner/work/BMICalculator/BMICalculator/SeleniumTest/bin/Release/net8.0/myapp/SeleniumTest.dll/name="webAppUri"/" --logger:"trx;LogFileName=selenium.trx"
-  
-    # Upload results of selenium tests
-      - uses: actions/upload-artifact@v4
+        run: dotnet test SeleniumTest/bin/Release/net8.0/SeleniumTest.dll/name="webAppUri"/ --logger:"trx;LogFileName=selenium.trx"
+
+      # Upload results of Selenium tests
+      - name: Upload Selenium Test Results
+        uses: actions/upload-artifact@v4
         with:
           name: Selenium Tests Results
-          path: TestResults/selenium.trx
-  
+          path: SeleniumTest/bin/Release/net8.0/TestResults/selenium.trx
+
       - name: Login to Azure
         uses: azure/login@v2
         with:
@@ -73,9 +85,6 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'BMICaluator'
+          app-name: 'BMICalculator'
           slot-name: 'Production'
-          package: .
-
-       
-          
+          package: myapp

@@ -53,7 +53,7 @@ jobs:
 
      # Run Selenium tests
       - name: Run Selenium tests
-        run: dotnet test ./myapp/SeleniumTest.dll/name="WebAppURI"
+        run: dotnet test  /home/runner/work/BMICalculator/BMICalculator/SeleniumTest/bin/Release/net8.0/SeleniumTest.dll/name="bmicaluator-f4fwgrdfdbfkgfet.ukwest-01.azurewebsites.net"
   
     # Upload results of selenium tests
       - uses: actions/upload-artifact@v4

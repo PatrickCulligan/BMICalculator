@@ -50,6 +50,9 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: .net-app
+      # Run Selenium tests
+      - name: Run Selenium tests
+        run: dotnet test ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/myapp/SeleniumTest.dll /Settings:SeleniumTest.runsettings --logger:"trx;LogFileName=selenium.trx"
       
       - name: Login to Azure
         uses: azure/login@v2

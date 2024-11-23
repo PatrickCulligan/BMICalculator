@@ -26,6 +26,7 @@ namespace BMIUnitTestProject
             };
 
             // Act
+
             var category = bmi.BMICategory;
 
 

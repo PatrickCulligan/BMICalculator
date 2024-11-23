@@ -28,7 +28,6 @@ namespace BMIUnitTestProject
             // Act
             var category = bmi.BMICategory;
 
-
             // Assert
             Assert.AreEqual(BMICategory.Obese, category, "Senior BMI Category calculation is incorrect");
         }

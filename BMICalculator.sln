@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BMICalculator", "BMICalcula
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BMIUnitTestProject", "BMIUnitTestProject\BMIUnitTestProject.csproj", "{956B93FF-8926-4490-9D30-C10FBD411859}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeleniumTest", "..\..\..\..\Desktop\bmi2021multijob-master\SeleniumTest\SeleniumTest.csproj", "{C8F0092F-F491-4316-ADAB-1E34F1C2D0DA}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{956B93FF-8926-4490-9D30-C10FBD411859}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{956B93FF-8926-4490-9D30-C10FBD411859}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{956B93FF-8926-4490-9D30-C10FBD411859}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C8F0092F-F491-4316-ADAB-1E34F1C2D0DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C8F0092F-F491-4316-ADAB-1E34F1C2D0DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C8F0092F-F491-4316-ADAB-1E34F1C2D0DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C8F0092F-F491-4316-ADAB-1E34F1C2D0DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

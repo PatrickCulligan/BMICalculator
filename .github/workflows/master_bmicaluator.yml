@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Fetch all history for all branches and tags
+          fetch-depth: 0  # Ensure full checkout
 
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v4
@@ -54,16 +54,24 @@ jobs:
       - name: List directory contents
         run: ls -R
 
+      # Build Selenium Test Project
+      - name: Build Selenium Test Project
+        run: dotnet build SeleniumTest/SeleniumTest.csproj --configuration Release
+
+      # Debug Step: List directory contents for Selenium build
+      - name: List Selenium build directory
+        run: ls -R ./SeleniumTest/bin/Release/net8.0/
+
       # Run Selenium tests
       - name: Run Selenium tests
-        run: dotnet test ./SeleniumTest/SeleniumTest.dll --logger:"trx;LogFileName=selenium.trx"
+        run: dotnet test ./SeleniumTest/bin/Release/net8.0/SeleniumTest.dll --logger:"trx;LogFileName=selenium.trx"
   
       # Upload results of Selenium tests
       - name: Upload Selenium Test Results
         uses: actions/upload-artifact@v4
         with:
           name: Selenium Tests Results
-          path: SeleniumTest/TestResults/selenium.trx
+          path: SeleniumTest/bin/Release/net8.0/TestResults/selenium.trx
   
       - name: Login to Azure
         uses: azure/login@v2

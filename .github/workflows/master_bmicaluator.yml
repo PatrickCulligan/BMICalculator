@@ -12,6 +12,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch all history for all branches and tags
 
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v4
@@ -54,7 +56,7 @@ jobs:
 
       # Run Selenium tests
       - name: Run Selenium tests
-        run: dotnet test ./SeleniumTest/SeleniumTest.csproj --logger:"trx;LogFileName=selenium.trx"
+        run: dotnet test ./SeleniumTest/SeleniumTest.dll --logger:"trx;LogFileName=selenium.trx"
   
       # Upload results of Selenium tests
       - name: Upload Selenium Test Results

@@ -57,7 +57,7 @@ jobs:
       # Run Selenium tests to validate the deployment before production swap
       - name: Run Selenium Tests
         run: |
-          dotnet test myapp/SeleniumTest/SeleniumTest.dll --logger:"trx;LogFileName=selenium.trx"
+          dotnet test myapp/SeleniumTest.dll --logger:"trx;LogFileName=selenium.trx"
         continue-on-error: true  # This ensures that a failed Selenium test doesn’t halt the workflow
 
       # Upload results of Selenium tests

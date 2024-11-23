@@ -63,6 +63,7 @@ jobs:
       - name: List Selenium build directory
         run: ls -R ./SeleniumTest/bin/Release/net8.0/
 
+
       # Run Selenium tests
       - name: Run Selenium tests
         run: dotnet test SeleniumTest/bin/Release/net8.0/SeleniumTest.dll/name="webAppUri" --logger:"trx;LogFileName=selenium.trx"

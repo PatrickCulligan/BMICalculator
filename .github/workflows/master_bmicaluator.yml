@@ -54,7 +54,7 @@ jobs:
 
                # Run Selenium tests
       - name: Run Selenium tests
-        run: dotnet test /home/runner/work/BMICalculator/BMICalculator/SeleniumTest/bin/Release/net8.0/SeleniumTest.dll/name="webAppUri"/" --logger:"trx;LogFileName=selenium.trx"
+        run: dotnet test /home/runner/work/BMICalculator/BMICalculator/SeleniumTest/bin/Release/net8.0/myapp/SeleniumTest.dll/name="webAppUri"/" --logger:"trx;LogFileName=selenium.trx"
   
     # Upload results of selenium tests
       - uses: actions/upload-artifact@v4

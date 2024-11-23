@@ -53,7 +53,7 @@ jobs:
 
      # Run Selenium tests
       - name: Run Selenium tests
-        run: dotnet test ./myapp/SeleniumTest.dll/name = "WebAppURI"
+        run: dotnet test ./myapp/SeleniumTest.dll/name="WebAppURI"
   
     # Upload results of selenium tests
       - uses: actions/upload-artifact@v4

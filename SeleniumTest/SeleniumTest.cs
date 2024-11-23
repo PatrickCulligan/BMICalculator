@@ -18,7 +18,7 @@ using System;
 namespace SeleniumTest
 {
     [TestClass]
-    public class UnitTest1
+    public class SeleniumTest
     {
         // .runsettings file contains test run parameters
         // e.g. URI for app

@@ -54,7 +54,7 @@ jobs:
 
            # Run Selenium tests
       - name: Run Selenium tests
-        run: dotnet test ${{ env.DOTNET_ROOT }}/myapp/SeleniumTest.dll
+        run: dotnet test ${{ env.DOTNET_ROOT }}/myapp/SeleniumTest.csproj
   
       - name: Login to Azure
         uses: azure/login@v2

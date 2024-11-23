@@ -51,15 +51,16 @@ jobs:
         with:
           name: .net-app
 
-               # Run Selenium tests
+
+                # Run Selenium tests
       - name: Run Selenium tests
-        run: dotnet test ${{env.DOTNET_ROOT}}/myapp/SeleniumTest.dll
+        run: dotnet test ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/myapp/SeleniumTest.dll --logger:"trx;LogFileName=selenium.trx"
   
-    # Upload results of selenium tests
+# Upload results of selenium tests
       - uses: actions/upload-artifact@v4
         with:
-          name: Selenium Tests Results
-          path: TestResults/selenium.trx
+         name: Selenium Tests Results
+         path: TestResults/selenium.trx
   
       - name: Login to Azure
         uses: azure/login@v2

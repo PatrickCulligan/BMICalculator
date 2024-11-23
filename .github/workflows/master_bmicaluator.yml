@@ -51,7 +51,6 @@ jobs:
         with:
           name: .net-app
 
-
                # Run Selenium tests
       - name: Run Selenium tests
         run: dotnet test ${{env.DOTNET_ROOT}}/myapp/SeleniumTest.dll"trx;LogFileName=selenium.trx"

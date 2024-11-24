@@ -55,7 +55,7 @@ jobs:
 
       # Run Selenium tests with exception handling
       - name: Run Selenium tests
-        run: dotnet test SeleniumTest/SeleniumTest.csproj --settings:SeleniumTest.runsettings --logger:"trx;LogFileName=selenium.trx"
+        run: dotnet test SeleniumTest/SeleniumTest.csproj --settings:SeleniumTest.runnsettings --logger:"trx;LogFileName=selenium.trx"
         continue-on-error: true  # Allow the workflow to continue even if this step fails
   
       # Upload results of selenium tests

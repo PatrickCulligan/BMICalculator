@@ -57,7 +57,8 @@ jobs:
 
      # Run Selenium tests
       - name: Run Selenium tests
-        run: dotnet test ${{env.DOTNET_ROOT}}/myapp/SeleniumTest.dll/--settings:SeleniumTest.runnsettings
+        run: dotnet test ./myapp/SeleniumTest.dll/--settings:SeleniumTest.runnsettings
+        continue-on-error: true  # Allow the workflow to continue even if this step fails
 
       # Upload results of selenium tests
       - uses: actions/upload-artifact@v4

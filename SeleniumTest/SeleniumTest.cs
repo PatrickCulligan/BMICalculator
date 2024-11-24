@@ -29,8 +29,8 @@ namespace SeleniumTest
         // test harness uses this property to initliase test context
         public TestContext TestContext
         {
-            get { return testContextInstance; }
-            set { testContextInstance = value; }
+            get { return this.testContextInstance; }
+            set { this.testContextInstance = value; }
         }
 
         // URI for web app being tested
@@ -46,7 +46,7 @@ namespace SeleniumTest
             // read URL from SeleniumTest.runsettings (configure run settings)
             //this.webAppUri = testContextInstance.Properties["webAppUri"].ToString();
 
-            this.webAppUri = "https://bmicaluator-f4fwgrdfdbfkgfet.ukwest-01.azurewebsites.net/";
+           this.webAppUri = "https://bmicaluator-f4fwgrdfdbfkgfet.ukwest-01.azurewebsites.net/";
         }
 
         [TestMethod]

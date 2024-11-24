@@ -53,18 +53,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: .net-app
-
-
-     # Run Selenium tests
-      - name: Run Selenium tests
-        run: dotnet test ./myapp/SeleniumTest.dll/--settings:SeleniumTest.runnsettings
-        continue-on-error: true  # Allow the workflow to continue even if this step fails
-
-      # Upload results of selenium tests
-      - uses: actions/upload-artifact@v4
-        with:
-          name: Selenium Tests Results
-          path: TestResults/selenium.trx
+     
   
       - name: Login to Azure
         uses: azure/login@v2

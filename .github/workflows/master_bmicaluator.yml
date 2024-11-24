@@ -57,7 +57,7 @@ jobs:
 
      # Run Selenium tests
       - name: Run Selenium tests
-        run: dotnet test ${{env.DOTNET_ROOT}}/myapp/SeleniumTest.dll/--Settings:SeleniumTest.runnsettings
+        run: dotnet test ${{env.DOTNET_ROOT}}/myapp/SeleniumTest.dll/--settings:SeleniumTest.runnsettings
 
       # Upload results of selenium tests
       - uses: actions/upload-artifact@v4

@@ -1,0 +1,21 @@
+name: k6
+
+on:
+  workflow_dispatch:        # manually triggered
+
+jobs:
+
+  k6_load_test:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Pull Docker image for k6
+      run: docker pull loadimpact/k6
+    - name: Run k6 load test
+      run: docker run -i loadimpact/k6 run - <perf1.js > k6report.txt
+    - uses: actions/upload-artifact@v2
+      with:
+        name: k6report
+        path: k6report.txt

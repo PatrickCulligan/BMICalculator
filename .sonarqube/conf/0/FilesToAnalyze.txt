@@ -1,0 +1,12 @@
+﻿C:\Users\Owner\source\repos\bmi-master\bmi-master\SeleniumTest\SeleniumTest.cs
+C:\Users\Owner\.nuget\packages\microsoft.net.test.sdk\17.7.2\build\netcoreapp3.1\Microsoft.NET.Test.Sdk.Program.cs
+C:\Users\Owner\.nuget\packages\microsoft.testplatform.testhost\17.7.2\build\netcoreapp3.1\x64\testhost.exe
+C:\Users\Owner\.nuget\packages\microsoft.testplatform.testhost\17.7.2\build\netcoreapp3.1\x64\testhost.dll
+C:\Users\Owner\.nuget\packages\selenium.webdriver\4.26.1\manager\linux\selenium-manager
+C:\Users\Owner\.nuget\packages\selenium.webdriver\4.26.1\manager\macos\selenium-manager
+C:\Users\Owner\.nuget\packages\selenium.webdriver\4.26.1\manager\windows\selenium-manager.exe
+C:\Users\Owner\source\repos\bmi-master\bmi-master\SeleniumTest\Selenium.runnsettings
+C:\Users\Owner\source\repos\bmi-master\bmi-master\SeleniumTest\Selenium_runner.properties
+C:\Users\Owner\.nuget\packages\mstest.testadapter\3.1.1\build\net6.0\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\Owner\.nuget\packages\mstest.testadapter\3.1.1\build\net6.0\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\Owner\.nuget\packages\mstest.testadapter\3.1.1\build\net6.0\Microsoft.TestPlatform.AdapterUtilities.dll

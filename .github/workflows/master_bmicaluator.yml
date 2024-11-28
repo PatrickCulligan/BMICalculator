@@ -72,7 +72,7 @@ jobs:
 
            # Run Selenium tests
       - name: Run Selenium tests
-        run: dotnet test /home/runner/work/BMICalculator/BMICalculator/SeleniumTest/bin/Release/net8.0/SeleniumTest.dlll/--settings:SeleniumTest.runnsettings
+        run: dotnet test /home/runner/work/BMICalculator/BMICalculator/SeleniumTest/bin/Release/net8.0/SeleniumTest.dll/--settings:SeleniumTest.runnsettings
         continue-on-error: true  # Allow the workflow to continue even if this step fails
 
       # Upload results of selenium tests

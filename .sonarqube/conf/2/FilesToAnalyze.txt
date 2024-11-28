@@ -1,0 +1,4 @@
+﻿C:\Users\Owner\source\repos\bmi-master\bmi-master\BMIUnitTestProject\UnitTest1.cs
+C:\Users\Owner\.nuget\packages\mstest.testadapter\1.3.2\build\_common\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\Owner\.nuget\packages\mstest.testadapter\1.3.2\build\_common\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\Owner\.nuget\packages\mstest.testadapter\1.3.2\build\netcoreapp1.0\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
